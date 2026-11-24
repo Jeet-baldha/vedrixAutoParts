@@ -36,11 +36,11 @@ const evProducts = [
 ];
 
 const autoProducts = [
-  { name: "Suspension Parts", detail: "Struts, springs, mounts and suspension components.", image: "/images/product-suspension-v2.png" },
-  { name: "Steering Parts", detail: "Steering racks, tie rods, boots and linkage parts.", image: "/images/product-steering-v2.png" },
-  { name: "Ignition Parts", detail: "Spark plugs and ignition coils.", image: "/images/product-ignition-v2.png" },
-  { name: "Automotive Filters", detail: "Air, oil and fuel filtration products.", image: "/images/product-filters-v2.png" },
-  { name: "Automotive Lights", detail: "Headlamps, tail lamps and indicators.", image: "/images/product-lights-v2.png" },
+  { name: "Suspension Parts", detail: "Struts, springs, mounts and suspension components.", image: "/images/product-suspension-v2.webp" },
+  { name: "Steering Parts", detail: "Steering racks, tie rods, boots and linkage parts.", image: "/images/product-steering-v2.webp" },
+  { name: "Ignition Parts", detail: "Spark plugs and ignition coils.", image: "/images/product-ignition-v2.webp" },
+  { name: "Automotive Filters", detail: "Air, oil and fuel filtration products.", image: "/images/product-filters-v2.webp" },
+  { name: "Automotive Lights", detail: "Headlamps, tail lamps and indicators.", image: "/images/product-lights-v2.webp" },
 ];
 
 const activities = [
@@ -79,8 +79,7 @@ export default function Home() {
     <main>
       <header className="header">
         <a className="brand" href="#top" aria-label="VEDRIX AUTO home">
-          <Image src="/images/vedrix-logo.svg" alt="VEDRIX AUTO" width={46} height={46} />
-          <span><strong>VEDRIX</strong><small>AUTO PARTS PVT. LTD.</small></span>
+          <Image src="/images/vedrix-logo.png" alt="VEDRIX AUTO PARTS" width={228} height={54} priority />
         </a>
         <nav id="mobile-navigation" className={menuOpen ? "nav open" : "nav"}>
           <a href="#product-desk" onClick={() => setMenuOpen(false)}>Product Desk</a>
@@ -93,7 +92,7 @@ export default function Home() {
       </header>
 
       <section className="hero" id="top">
-        <Image src="/images/hero-balanced-v6.png" alt="Electric vehicle displayed with correctly scaled EV components and automobile spare parts" fill priority unoptimized sizes="100vw" />
+        <Image src="/images/hero-balanced-v6.webp" alt="Electric vehicle with EV components and automobile spare parts" fill priority sizes="100vw" />
         <div className="hero-wash" />
         <div className="container hero-content">
           <p className="kicker">EV Components · Auto Spares · India Supply</p>
@@ -113,8 +112,18 @@ export default function Home() {
         <div className="container">
           <div className="section-lead">
             <div><p className="kicker">Product Range</p><h2>Two systems.<br />One supply desk.</h2></div>
-            <p>VEDRIX AUTO supplies electric mobility components and fast-moving automobile parts through one direct enquiry channel.</p>
+            <p>VEDRIX AUTO supplies automobile spare parts and electric mobility components through one direct enquiry channel.</p>
           </div>
+
+          <article className="product-chapter auto-chapter">
+            <div className="auto-chapter-head">
+              <div><p className="chapter-label">Automobile Spare Parts</p><h3>Service and replacement categories.</h3></div>
+              <a href={whatsapp("Hello VEDRIX AUTO, I need automobile spare parts. Please help with availability.")} target="_blank" rel="noopener noreferrer">Send Parts Requirement</a>
+            </div>
+            <div className="auto-product-rail">
+              {autoProducts.map((product) => <article key={product.name}><div><Image src={product.image} alt={product.name} fill sizes="(max-width: 700px) 78vw, 25vw" /></div><h3>{product.name}</h3><p>{product.detail}</p></article>)}
+            </div>
+          </article>
 
           <article className="product-chapter ev-chapter">
             <div className="chapter-copy">
@@ -124,21 +133,11 @@ export default function Home() {
               <div className="chapter-list">
                 {evProducts.map((product) => { const Icon = product.icon; return <div key={product.name}><Icon /><span>{product.name}</span></div>; })}
               </div>
-              <a href={whatsapp("Hello VEDRIX AUTO, please share your EV product range and availability.")} target="_blank">Request EV Range & Availability</a>
+              <a href={whatsapp("Hello VEDRIX AUTO, please share your EV product range and availability.")} target="_blank" rel="noopener noreferrer">Request EV Range &amp; Availability</a>
             </div>
             <div className="chapter-visual">
-              <Image src="/images/ev-system.png" alt="EV hub motor, battery and controller system" fill unoptimized sizes="(max-width: 900px) 100vw, 54vw" />
+              <Image src="/images/ev-system.webp" alt="EV hub motor, battery and motor controller" fill sizes="(max-width: 900px) 100vw, 54vw" />
               <span>EV conversion system</span>
-            </div>
-          </article>
-
-          <article className="product-chapter auto-chapter">
-            <div className="auto-chapter-head">
-              <div><p className="chapter-label">Automobile Spare Parts</p><h3>Service and replacement categories.</h3></div>
-              <a href={whatsapp("Hello VEDRIX AUTO, I need automobile spare parts. Please help with availability.")} target="_blank">Send Parts Requirement</a>
-            </div>
-            <div className="auto-product-rail">
-              {autoProducts.map((product) => <article key={product.name}><div><Image src={product.image} alt={product.name} fill unoptimized sizes="(max-width: 700px) 78vw, 25vw" /></div><h3>{product.name}</h3><p>{product.detail}</p></article>)}
             </div>
           </article>
         </div>
@@ -156,7 +155,7 @@ export default function Home() {
       </section>
 
       <section className="company" id="company">
-        <div className="company-image"><Image src="/images/warehouse-inventory-v2.png" alt="Organised EV component and automobile spare-parts warehouse inventory" fill unoptimized sizes="(max-width: 900px) 100vw, 50vw" /></div>
+        <div className="company-image"><Image src="/images/warehouse-inventory-v2.webp" alt="Organised EV components and automobile spare parts" fill sizes="(max-width: 900px) 100vw, 50vw" /></div>
         <div className="company-content">
           <p className="kicker">VEDRIX AUTO PARTS PVT. LTD.</p>
           <h2>Automobile supply meets electric mobility.</h2>
@@ -173,7 +172,7 @@ export default function Home() {
         <div className="container">
           <div className="section-lead compact"><div><p className="kicker">Who We Supply</p><h2>One range. Multiple business channels.</h2></div></div>
           <div className="channel-lanes">
-            {channels.map((channel) => { const Icon = channel.icon; return <article key={channel.name}><Icon /><h3>{channel.name}</h3><p>{channel.text}</p><a href={whatsapp(`Hello VEDRIX AUTO, I am enquiring as a ${channel.name}.`)} target="_blank">Discuss requirements</a></article>; })}
+            {channels.map((channel) => { const Icon = channel.icon; return <article key={channel.name}><Icon /><h3>{channel.name}</h3><p>{channel.text}</p><a href={whatsapp(`Hello VEDRIX AUTO, I am enquiring as a ${channel.name}.`)} target="_blank" rel="noopener noreferrer">Discuss requirements</a></article>; })}
           </div>
         </div>
       </section>
@@ -185,7 +184,7 @@ export default function Home() {
             {services.map(([name, detail], index) => (
               <details key={name} open={index === 0}>
                 <summary><span>{name}</span><ChevronDown /></summary>
-                <div><p>{detail}</p><a href={whatsapp(`Hello VEDRIX AUTO, I have an enquiry about ${name}.`)} target="_blank">Start {name} Enquiry</a></div>
+                <div><p>{detail}</p><a href={whatsapp(`Hello VEDRIX AUTO, I have an enquiry about ${name}.`)} target="_blank" rel="noopener noreferrer">Start {name} Enquiry</a></div>
               </details>
             ))}
           </div>
@@ -208,7 +207,7 @@ export default function Home() {
               <p>Contact us directly for wholesale, dealership, distribution and bulk-order enquiries.</p>
             </div>
             <div className="contact-points">
-              <a href="https://wa.me/917048437976" target="_blank"><WhatsAppIcon /><span><small>Primary WhatsApp</small>+91 7048437976</span></a>
+              <a href="https://wa.me/917048437976" target="_blank" rel="noopener noreferrer"><WhatsAppIcon /><span><small>Primary WhatsApp</small>+91 7048437976</span></a>
               <a href="tel:+917283889492"><Phone /><span><small>Phone</small>+91 7283889492</span></a>
               <a href="mailto:vedrixauto@gmail.com"><Mail /><span><small>Email</small>vedrixauto@gmail.com</span></a>
               <div><MapPin /><span><small>Location</small>Rajkot, Gujarat, India</span></div>
@@ -219,14 +218,14 @@ export default function Home() {
 
       <footer>
         <div className="container footer-main">
-          <a className="brand" href="#top"><Image src="/images/vedrix-logo.svg" alt="VEDRIX AUTO" width={42} height={42} /><span><strong>VEDRIX</strong><small>AUTO PARTS PVT. LTD.</small></span></a>
+          <a className="brand" href="#top"><Image src="/images/vedrix-logo.png" alt="VEDRIX AUTO PARTS" width={228} height={54} /></a>
           <p>Powering the Future of Mobility</p>
           <div><a href="#product-desk">Products</a><a href="#company">Company</a><a href="#services">Services</a><a href="#contact">Contact</a></div>
         </div>
         <div className="container footer-bottom"><span>© 2026 VEDRIX AUTO PARTS PVT. LTD.</span><span>Rajkot, Gujarat, India</span></div>
       </footer>
 
-      <a className="floating-wa" href={whatsapp("Hello VEDRIX AUTO, I have a product enquiry.")} target="_blank" aria-label="Chat with VEDRIX AUTO on WhatsApp"><WhatsAppIcon /></a>
+      <a className="floating-wa" href={whatsapp("Hello VEDRIX AUTO, I have a product enquiry.")} target="_blank" rel="noopener noreferrer" aria-label="Chat with VEDRIX AUTO on WhatsApp"><WhatsAppIcon /></a>
     </main>
   );
 }
