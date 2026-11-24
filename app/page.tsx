@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { FormEvent, useState } from "react";
+import { useState } from "react";
 import {
   BatteryCharging,
   Boxes,
@@ -75,19 +75,6 @@ function WhatsAppIcon() {
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
 
-  function submitEnquiry(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    const message = [
-      "Hello VEDRIX AUTO, I have a product requirement.",
-      `Name: ${data.get("name")}`,
-      `Phone: ${data.get("phone")}`,
-      `Business type: ${data.get("business")}`,
-      `Requirement: ${data.get("message")}`,
-    ].join("\n");
-    window.open(whatsapp(message), "_blank", "noopener,noreferrer");
-  }
-
   return (
     <main>
       <header className="header">
@@ -95,26 +82,25 @@ export default function Home() {
           <Image src="/images/vedrix-logo.svg" alt="VEDRIX AUTO" width={46} height={46} />
           <span><strong>VEDRIX</strong><small>AUTO PARTS PVT. LTD.</small></span>
         </a>
-        <nav className={menuOpen ? "nav open" : "nav"}>
+        <nav id="mobile-navigation" className={menuOpen ? "nav open" : "nav"}>
           <a href="#product-desk" onClick={() => setMenuOpen(false)}>Product Desk</a>
           <a href="#company" onClick={() => setMenuOpen(false)}>Company</a>
           <a href="#services" onClick={() => setMenuOpen(false)}>Services</a>
           <a href="#contact" onClick={() => setMenuOpen(false)}>Enquire</a>
         </nav>
         <a className="header-action" href="tel:+917048437976">Call +91 7048437976</a>
-        <button className="menu" onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle navigation">{menuOpen ? <X /> : <Menu />}</button>
+        <button className="menu" onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle navigation" aria-expanded={menuOpen} aria-controls="mobile-navigation">{menuOpen ? <X /> : <Menu />}</button>
       </header>
 
       <section className="hero" id="top">
-        <Image src="/images/hero-car-parts-v5.png" alt="Electric vehicle with EV components and automobile spare parts" fill priority unoptimized sizes="100vw" />
+        <Image src="/images/hero-balanced-v6.png" alt="Electric vehicle displayed with correctly scaled EV components and automobile spare parts" fill priority unoptimized sizes="100vw" />
         <div className="hero-wash" />
         <div className="container hero-content">
-          <p className="kicker">EV Components · Automobile Spares · India-Wide Supply</p>
+          <p className="kicker">EV Components · Auto Spares · India Supply</p>
           <h1>Parts that power<br /><span>every drive.</span></h1>
           <p className="hero-copy">Reliable EV systems and automobile spare parts for retailers, workshops, wholesalers, dealers and distributors.</p>
           <div className="hero-actions">
             <a className="button primary" href="#product-desk">Browse Product Categories</a>
-            <a className="button secondary" href={whatsapp("Hello VEDRIX AUTO, I would like to check product availability.")} target="_blank">Request Availability</a>
           </div>
         </div>
         <div className="hero-rail">
@@ -170,7 +156,7 @@ export default function Home() {
       </section>
 
       <section className="company" id="company">
-        <div className="company-image"><Image src="/images/supply-banner.png" alt="Automobile parts supply and warehouse operations" fill unoptimized sizes="(max-width: 900px) 100vw, 50vw" /></div>
+        <div className="company-image"><Image src="/images/warehouse-inventory-v2.png" alt="Organised EV component and automobile spare-parts warehouse inventory" fill unoptimized sizes="(max-width: 900px) 100vw, 50vw" /></div>
         <div className="company-content">
           <p className="kicker">VEDRIX AUTO PARTS PVT. LTD.</p>
           <h2>Automobile supply meets electric mobility.</h2>
@@ -216,9 +202,11 @@ export default function Home() {
       <section className="contact" id="contact">
         <div className="container contact-layout">
           <div className="contact-copy">
-            <p className="kicker light">Business Enquiries</p>
-            <h2>Tell us the part.<br />We&apos;ll discuss the supply.</h2>
-            <p>Contact us for wholesale, dealership, distribution and bulk-order enquiries.</p>
+            <div className="contact-intro">
+              <p className="kicker light">Business Enquiries</p>
+              <h2>Tell us the part.<br />We&apos;ll discuss the supply.</h2>
+              <p>Contact us directly for wholesale, dealership, distribution and bulk-order enquiries.</p>
+            </div>
             <div className="contact-points">
               <a href="https://wa.me/917048437976" target="_blank"><WhatsAppIcon /><span><small>Primary WhatsApp</small>+91 7048437976</span></a>
               <a href="tel:+917283889492"><Phone /><span><small>Phone</small>+91 7283889492</span></a>
@@ -226,13 +214,6 @@ export default function Home() {
               <div><MapPin /><span><small>Location</small>Rajkot, Gujarat, India</span></div>
             </div>
           </div>
-          <form className="enquiry" onSubmit={submitEnquiry}>
-            <h3>Send a product requirement</h3>
-            <div className="field-row"><label>Name<input name="name" required placeholder="Your name" /></label><label>Phone<input name="phone" type="tel" required placeholder="Mobile number" /></label></div>
-            <label>Business type<select name="business" defaultValue="Retail Customer"><option>Retail Customer</option><option>Workshop</option><option>Wholesaler</option><option>Dealer</option><option>Distributor</option><option>Other Business</option></select></label>
-            <label>Product requirement<textarea name="message" rows={4} required placeholder="Product, application, quantity and location" /></label>
-            <button type="submit">Continue on WhatsApp</button>
-          </form>
         </div>
       </section>
 
