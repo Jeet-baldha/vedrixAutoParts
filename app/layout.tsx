@@ -4,7 +4,7 @@ import "./globals.css";
 
 const manrope = Manrope({ subsets: ["latin"], variable: "--font-body" });
 const barlow = Barlow_Condensed({ subsets: ["latin"], variable: "--font-display", weight: ["600", "700"] });
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://vedrixautoparts.com";
+const siteUrl = "https://www.vedrixautoparts.in";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
